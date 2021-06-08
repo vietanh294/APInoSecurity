@@ -1,0 +1,93 @@
+.bg-dark{
+    width: 100%;
+ 
+    background-image: url('./bookstorewallpaper1368.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.7;
+}
+header .navbar-nav{
+    background-color: #213331ab !important;
+    border-radius: 3px !important;
+    border: none !important;
+    padding: 5px 30px !important;
+}
+header .nav-link{
+    font-weight: 600 !important;
+    font-size: 20px !important;
+    
+}
+.background-opacity{
+    background-color: #213331ab  !important;
+    border-radius: 3px;
+}
+
+/* <!-- Button Radio--> */
+
+  .btn-check{
+      display: none !important;
+  }
+  .btn{
+      padding: 5px 40px ;
+  }
+  .btn-check:checked + .btn-outline-success, .btn-check:active + .btn-outline-success, .btn-outline-success:active, .btn-outline-success.active, .btn-outline-success.dropdown-toggle.show {
+    color: #fff;
+    background-color: #198754;
+    border-color: #198754;
+  }
+  .btn-check:checked + .btn-outline-success:focus, .btn-check:active + .btn-outline-success:focus, .btn-outline-success:active:focus, .btn-outline-success.active:focus, .btn-outline-success.dropdown-toggle.show:focus {
+    box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.5);
+  }
+  /* <!-- Button Radio Danger--> */
+  .btn-check:checked + .btn-outline-danger, .btn-check:active + .btn-outline-danger, .btn-outline-danger:active, .btn-outline-danger.active, .btn-outline-danger.dropdown-toggle.show {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
+  .btn-check:checked + .btn-outline-danger:focus, .btn-check:active + .btn-outline-danger:focus, .btn-outline-danger:active:focus, .btn-outline-danger.active:focus, .btn-outline-danger.dropdown-toggle.show:focus {
+    box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.5);
+  }
+/* <!-- Button Radio Primary--> */
+  .btn-outline-primary {
+    color: #0d6efd;
+    border-color: #0d6efd;
+    padding: 5px 30px;
+  }
+ .btn-outline-primary:hover {
+    color: #fff;
+    background-color: rgba(0, 214, 214, 0.5) !important;
+    border-color: rgba(0, 214, 214, 0.5) !important;
+  }
+  /* <!-- Button Radio primary HOVER--> */
+  .btn-check:focus + .btn-outline-primary, .btn-outline-primary:focus {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.5);
+  }
+  .btn-check:checked + .btn-outline-primary, .btn-check:active + .btn-outline-primary, .btn-outline-primary:active, .btn-outline-primary.active, .btn-outline-primary.dropdown-toggle.show {
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+  }
+  .btn-check:checked + .btn-outline-primary:focus, .btn-check:active + .btn-outline-primary:focus, .btn-outline-primary:active:focus, .btn-outline-primary.active:focus, .btn-outline-primary.dropdown-toggle.show:focus {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.5);
+  }
+  .btn-outline-primary:disabled, .btn-outline-primary.disabled {
+    color: #0d6efd;
+    background-color: transparent;
+  }
+  /* <!-- Button Radio End--> */
+  .card:hover{
+    border-color: rgb(128, 128, 128);
+    box-shadow: 3px 3px 5px rgb(128, 128, 128) ;
+  }
+  .card-iitem:hover{
+    border-color: rgb(128, 128, 128);
+  }
+   /* <!-- NavBar Customize--> */
+   .active a{
+    color: #fff;
+    text-decoration: none;
+   }
+  .menubar-userpage a{
+     text-decoration: none;
+  }
+

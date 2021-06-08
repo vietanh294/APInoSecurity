@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Detail Page</title>
+    <!--JQuery-->
+
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootsrap 4 CDN
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link th:href="@{css/styles.css}" rel="stylesheet" />
+    <link rel="stylesheet"  th:href="@{css/home.css}">
+    <link rel="stylesheet"  th:href="@{css/bootstrap.css}">
+</head>
+<body>
+<header>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container" >
+            <div class="user-bar"  th:object="${userFormSignedIn2}" method="GET">
+                <span>Username:</span>
+                <span th:text="${userFormSignedIn2.userSignedPhone}">ngovietanh</span>
+                <br>
+                <p class="text-center" style="margin-bottom: 0px;">Đăng xuất</p>
+                <!-- <span class="text-center">Đăng xuất</span> -->
+            </div>
+            <!-- <a class="navbar-brand" href="#!">Start Bootstrap</a> -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./homePage">
+                            Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <!-- Lưu ý -->
+                    <li class="nav-item"><a class="nav-link nav-link-item" href="./login">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./register">Regiter</a></li>
+                    <li class="nav-item"><a class="nav-link" href="bookPage">Post</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="#!">Detail</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./userPage">User</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<main>
+    <!--================ Book Detail: =================-->
+    <section>
+        <div class="container">
+            <div class="d-flex justify-content-end align-items-center mt-3 mb-1">
+                    <span class="mr-5"><a class="btn btn-outline-secondary" href="./homePage">Trang Chủ</a></span>
+                    <span class="mr-5"><a class="btn btn-outline-secondary" href="./bookPage">Đăng Sách</a> </span>
+                    <span class="btn btn-outline-secondary" th:text="${userPostedPhone}">Contact</span>
+            </div>
+            <div class="row align-items-center" th:action="@{/detailPage}" th:object="${detailBook}" method="GET">
+                <div class="col-lg-6">
+                    <div class="testi_img" style="margin: 20px;">
+                        <img class="img-fluid" style="border-radius: 4px; !important" src="img/testi-img.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-5 offset-lg-1">
+                    <div class="single_testi">
+                        <div class="testi_author">
+                            <div class="a-desc">
+                                <h4 th:text="${detailBook.title}">Book title</h4>
+                            </div>
+                        </div>
+                        <div class="quote">
+                            <img class="img-fluid" src="img/quote.png" alt="">
+                        </div>
+                        <div class="testi_content">
+                            <p th:text="${detailBook.description}" style="font-family: 'Roboto', sans-serif;font-weight: 400;color: #777777; font-size: 24px; font-style: italic;">
+                                Book Description!</p>
+                        </div>
+                        <div class="testi_author">
+                            <div class="a-desc">
+                                 <h4 th:text="${detailBook.author}">Book Author</h4> <br>
+                                <span>Xuất bản:  </span> <span th:text="${detailBook.publishYear}">Book year</span> <br>
+                                <span>Giá bán:  </span> <span th:text="${detailBook.price}">Book Price</span> <br>
+                                <span>Thể loại:  </span> <span th:text="${categoryName}">Book categoryId</span> <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================ End Bool Detail Area =================-->
+</main>
+
+<!-- Footer-->
+<footer class="py-5 bg-dark">
+    <div class="container background-opacity">
+        <p class="m-0 text-center text-white">Copyright © Sách cũ 2021!</p></div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
+
+
+</body>
+</html>

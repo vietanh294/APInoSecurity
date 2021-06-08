@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring MVC + Thymeleaf</title>
+</head>
+<body>
+<h2>Add Employee</h2>
+<form th:action="@{/addEmployee}" th:object="${employee}" method="post">
+    <table>
+        <tr>
+            <td>Id</td>
+            <td><input th:field="*{id}" /></td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td><input th:field="*{name}" /></td>
+        </tr>
+        <tr>
+            <td>Addess</td>
+            <td><textarea th:field="*{address}" /></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input th:field="*{email}" /></td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td>
+                <input type="radio" th:field="*{gender}" th:value="male" />
+                <label th:text="male" />
+                <input type="radio" th:field="*{gender}" th:value="female" />
+                <label th:text="female" />
+            </td>
+        </tr>
+        <tr>
+            <td>Favorite</td>
+            <td>
+                <ul style="list-style-type: none;">
+                    <li th:each="fa : ${listFavorite}">
+                        <input type="checkbox"
+                               th:field="*{favorites}"
+                               th:value="${fa}" />
+                        <label th:text="${fa}"></label>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>Position</td>
+            <td>
+                <select th:field="*{position}">
+                    <option value=""></option>
+                    <option th:each="ps : ${listPosition}"
+                            th:value="${ps}" th:text="${ps}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Submit" /></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
+
+<!--@GetMapping(value = "/detailPage/{bookid}")-->
+<!--public String detailPage(Model modelDetailPage,-->
+<!--@PathVariable("bookid") Integer bookId){-->
+<!--UserFormSignedIn userFormSignedIn2=userFormSignedIn;-->
+
+<!--//        BookEntity bookDetail = new BookEntity();-->
+<!--BookEntity bookDetail =bookRepository.findByNativeQuery(bookId);-->
+<!--modelDetailPage.addAttribute("detailBook",bookDetail);-->
+<!--modelDetailPage.addAttribute("userFormSignedIn2",userFormSignedIn2);-->
+<!--return "detailPage";-->
+<!--}-->
+
+
+<div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination ml-4" th:if="${homeRequest.totalPages > 0}">
+                                    <span th:each="pageNum : ${pageNums}">
+                                        <li class="page-item">
+                                            <a class="page-link" th:field="*{pageNumber}" th:value="${pageNum}"
+                                               th:text="${pageNum}">1</a>
+                                        </li>
+                                    </span>
+        </ul>
+    </nav>
+</div>
+<!--                        Pagination&ndash;&gt;-->
+<div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination ml-4" th:if="${homeRequest.totalPages > 0}">
+            <li class="page-item">
+                <a class="page-link" href="#"
+                   aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                </a>
+            </li>
+            <li class="page-item"><a class="page-link" th:if="${homeRequest.totalPages > 3 && homeRequest.pageNumber >3}">...</a></li>
+            <li class="page-item"><a class="page-link" href="#"><</a></li>
+
+            <span th:each="pageNum : ${pageNums}">
+                                        <li class="page-item">
+                                            <a class="page-link" th:field="*{pageNumber}" th:value="${pageNum}"
+                                               th:text="${pageNum}">1</a>
+                                        </li>
+                                    </span>
+            <li class="page-item"><a class="page-link" href="#">></a></li>
+            <li class="page-item"><a class="page-link" th:if="${homeRequest.totalPages > 3}">...</a></li>
+            <li class="page-item">
+                <!--                                        <a class="page-link" th:href="@{/homePage(page=${homeRequest.totalPages})}" aria-label="Next">-->
+                <!--                                            <span aria-hidden="true">&raquo;</span>-->
+                <!--                                            <span class="sr-only">Next</span>-->
+                <!--                                        </a>-->
+            </li>
+        </ul>
+    </nav>
+</div>
+<!--                        Pagination End-->

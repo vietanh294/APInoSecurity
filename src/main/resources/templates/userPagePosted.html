@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>User Page</title>
+    <!--JQuery-->
+
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootsrap 4 CDN
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+    <!--Fontawesome CDN-->
+    <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.3.1/css/all.css}" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link th:href="@{../css/styles.css}" rel="stylesheet" />
+    <link rel="stylesheet"  th:href="@{../css/home.css}">
+    <!--    <style>-->
+    <!--    .input-group-text{width: 50px;display: flex; justify-content: center;}-->
+    <!--    </style>-->
+</head>
+<body>
+<header>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container" >
+            <div class="user-bar"  th:object="${userPhone}" method="GET">
+                <span>Username:</span>
+                <span th:text="${userPhone}">ngovietanh</span>
+                <br>
+                <p class="text-center" style="margin-bottom: 0px;">Đăng xuất</p>
+            </div>
+            <!-- <a class="navbar-brand" href="#!">Start Bootstrap</a> -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../homePage">
+                            Home
+                        </a>
+                    </li>
+                    <!-- Lưu ý -->
+                    <li class="nav-item"><a class="nav-link nav-link-item" href="../login">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../register">Register</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../bookPage">Post</a></li>
+                    <li class="nav-item"><a class="nav-link  disabled" href="../detailPage">Detail</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#!">User</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section class="container menubar-userpage">
+        <ul class="d-flex justify-content-start"  style="margin-bottom: 0px; margin-top: 20px; border-bottom: rgba(13, 110, 253) 1px solid;list-style-type: none;">
+            <li style="margin-left: 10px;" >
+                <a  class="btn btn-outline-primary" href="./info">Thông tin</a>
+            </li>
+            <li style="margin-left: 10px;">
+                <a  class="btn btn-outline-primary  active" href="./posted">Sách đã đăng</a>
+            </li>
+            <li style="margin-left: 10px;" >
+                <a class="btn btn-outline-primary"  href="./collection">Sách yêu thích</a>
+            </li>
+        </ul>
+    </section>
+    <section class="container">
+        <form>
+            <!--                <form id="collectionForm" th:action="@{/userPage/collection}"-->
+<!--            th:object="${userPageCollectionRequest}" method="PUT">-->
+            <!--                        <div class="d-flex justify-content-start align-items-center" th:each ="userPageCollectionItem : ${userPageCollectionResponse}">-->
+
+<!--            <div class="row text-center mt-4 d-flex align-items-center">-->
+
+        <div class="row text-center mt-4 d-flex align-items-center" th:each="userPagePostedResponse: ${userPagePostedResponseList}" method="GET" >
+                <div class="col-lg-3 col-md-6 mb-4 card-iitem" >
+                    <div class="card">
+                        <img class="card-img-top" src="https://static.wikia.nocookie.net/forgottenrealms/images/c/c3/Ship.jpg" alt="..." />
+                    <!--                        <div class="card-footer"><a class="btn btn-outline-primary"  >Đăng ảnh</a></div>-->
+                    </div>
+                </div>
+                <div class="card-body col-lg-9 col-md-6 mb-4 " style="padding-top: 0px;">
+                                    <div class="d-flex justify-content-start align-items-center" >
+                        <div class="col-lg-6"style="padding: 0px; margin-right: 10px;">
+                            <div class="input-group form-group " >
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Tiêu đề</span>
+                                </div>
+                                <input  type="text" style="overflow: hidden;" class="form-control" placeholder="book title. . ." th:value="${userPagePostedResponse.bookTitle}">
+<!--                                <h4 style="overflow: hidden;" class="form-control" th:text="${userPagePostedResponse.bookTitle}">Book title</h4>-->
+                            </div>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Năm Phát Hành</i></span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="publish year. . ." th:value="${userPagePostedResponse.publishYear}">
+<!--                                <h4 class="form-control" th:text="${userPagePostedResponse.publishYear}">PublishYear</h4>-->
+                            </div>
+                        </div>
+                        <div class="col-lg-6"style="padding: 0px; margin-right: 10px;">
+                            <div class="input-group form-group " >
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Ngày Đăng</i></span>
+                                </div>
+<!--                                <h4  class="form-control" th:text="${userPagePostedResponse.postedDate}">Posted Day</h4>-->
+                                <input type="text" class="form-control" placeholder="posted day. . ." th:value="${userPagePostedResponse.postedDate}">
+                            </div>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Giá Bán</i></span>
+                                </div>
+                                <input  type="text" class="form-control" placeholder="book price . ." th:value="${userPagePostedResponse.bookPrice}">
+<!--                                <h4 class="form-control" th:text="${userPagePostedResponse.bookPrice}">Price</h4>-->
+                            </div>
+                        </div>
+                    </div>
+                    <!--                            <div class="col-lg-6"style="padding: 0px; margin-right: 10px;">-->
+                    <!--                                <div class="input-group form-group">-->
+                    <!--                                    <div class="input-group-prepend">-->
+                    <!--                                        <span class="input-group-text"><i class="fas fa-key"></i></span>-->
+                    <!--                                    </div>-->
+                    <!--                                    <input type="number" class="form-control" placeholder="publishYear . . ." th:field="*{publishYear}">-->
+                    <!--                                </div>-->
+                    <!--                            </div>-->
+
+                    <div class="form-group">
+                        <div class="card-footer"><a class="btn btn-outline-primary mr-4" th:href="@{../detailPage(id=${userPagePostedResponse.bookId})}" >Chi tiết Sách!</a><span><input type="submit" value="LƯU" class="btn btn-outline-primary"></span></div>
+
+
+
+<!--                                                        <input th:if="${person.gender} == 'M'" th:text="Male"-->
+<!--                                                               type="submit" value="BỎ THÍCH" class="btn btn-outline-primary">-->
+<!--                                                        <span th:if="${person.gender} == 'M'" th:text="Male" />-->
+<!--                                                        th:field="*{bookId}" th:value = "${userPageCollectionResponse.bookId"-->
+<!--                                                        <span th:unless="${person.gender} == 'M'" th:text="Female" />-->
+<!--                        <input type="checkbox" checked data-on="BỎ THÍCH" data-off="THÍCH" data-toggle="toggle" data-onstyle="success" data-offstyle="danger">-->
+<!--                                                        <input type="checkbox" onchange="autoSubmitFunction()"  class="btn-check" name="options-outlined" th:id="'primary-outlined'+${categoyItem.cateId}" autocomplete="off" th:field="*{categoryIde}" th:value="${categoyItem.cateId}">-->
+<!--                                                        <label  class="btn btn-outline-primary" th:for="'primary-outlined'+${categoyItem.cateId}" >BỎ THÍCH</label>-->
+                    </div>
+
+
+                </div>
+            </div>
+        </form>
+    </section>
+</main>
+
+<!-- Footer-->
+<footer class="py-5 bg-dark">
+    <div class="container background-opacity">
+        <p class="m-0 text-center text-white">Copyright © Sách cũ 2021!</p></div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
+</body>
+</html>
